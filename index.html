@@ -34,6 +34,23 @@
             max-width: 1100px; margin: 25px auto; background-color: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden; border: 1px solid #ddd;
+            position: relative; /* <-- مطلوب من أجل العلامة المائية */
+            z-index: 1;
+        }
+        /* --- Logo Watermark Background --- */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/LDZgWZCs/image.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 350px;
+            opacity: 0.08; /* <-- التحكم في شفافية الشعار */
+            z-index: -1;
         }
         .section-title {
             font-family: 'Marhey', sans-serif; font-size: 1.8em; color: var(--secondary-color);
@@ -57,23 +74,23 @@
         #menu-view th { 
             font-family: 'Cairo', sans-serif; 
             font-size: 1.2em; 
-            background-color: var(--table-header-bg); /* <-- اللون الجديد هنا */
+            background-color: var(--table-header-bg); 
             font-weight: 700; 
-            color: var(--secondary-color); /* <-- لون النص الجديد هنا */
+            color: var(--secondary-color); 
         }
         #menu-view tbody tr:nth-child(even) { background-color: var(--bg-color); }
         #menu-view tbody tr:hover { background-color: #fff8e1; }
         .cta-section { text-align: center; padding: 40px 20px; background: var(--bg-color); }
         #go-to-order-page-btn { 
             padding: 15px 40px; 
-            background: var(--primary-color); /* <-- تم تغيير الخلفية */
+            background: var(--primary-color); 
             color: var(--white-color); 
             border-radius: 50px; 
             font-family: 'Marhey', sans-serif; 
-            font-size: 1.4em; /* <-- تم تصغير الخط */
+            font-size: 1.4em; 
             border: none; 
             cursor: pointer; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* <-- تم اضافة ظل ناعم */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
         }
         
         /* --- STAGE 2: Order View --- */
@@ -111,8 +128,8 @@
         #cart-total { margin-top: 20px; padding-top: 15px; border-top: 2px solid var(--secondary-color); text-align: center; font-size: 1.5em; font-weight: bold; }
         #order-view .customer-details { padding: 30px; margin-top: 30px; background-color: #fafafa; border-radius: 15px; }
         #order-view .form-group { margin-bottom: 20px; }
-        #order-view .form-group label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.2em; color: var(--secondary-color); }
-        #order-view .form-group input { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1.1em; font-family: 'Cairo', sans-serif; }
+        #order-view .form-group label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.2em; color: var(--secondary-color); text-align: right; }
+        #order-view .form-group input { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1.1em; font-family: 'Cairo', sans-serif; text-align: right;}
         #order-view footer { text-align: center; padding: 30px; background-color: var(--secondary-color); }
         #send-order-btn-final { padding: 15px 40px; background: var(--whatsapp-green); color: var(--white-color); border-radius: 50px; font-family: 'Marhey', sans-serif; font-size: 1.5em; border: none; cursor: pointer; }
         
@@ -142,8 +159,8 @@
         #floating-order-btn:hover {
             transform: scale(1.05);
         }
-
-        .unavailable { color: #aaa; background-color: #f0f0f0; }
+        
+        .unavailable { color: #aaa; background-color: #f0f0f0; } 
     </style>
 </head>
 <body>
@@ -170,25 +187,25 @@
                 <table>
                     <thead><tr><th>المنتج</th><th>ربع كيلو</th><th>نص كيلو</th><th>كيلو</th><th>جركن 7 كيلو</th></tr></thead>
                     <tbody>
-                        <tr><td class="product-name">عسل نحل للمائدة</td><td>35</td><td>70 ج.م</td><td>135 ج.م</td><td>850 ج.م</td></tr>
+                        <tr><td class="product-name">عسل نحل للمائدة</td><td>35 ج.م</td><td>70 ج.م</td><td>135 ج.م</td><td>850 ج.م</td></tr>
                         <tr><td class="product-name">عسل نوارة البرسيم</td><td>40 ج.م</td><td>80 ج.م</td><td>150 ج.م</td><td>950 ج.م</td></tr>
                         <tr><td class="product-name">عسل الموالح</td><td>45 ج.م</td><td>90 ج.م</td><td>170 ج.م</td><td>1050 ج.م</td></tr>
                         <tr><td class="product-name">عسل سمسم</td><td>45 ج.م</td><td>90 ج.م</td><td>170 ج.م</td><td>1050 ج.م</td></tr>
-                        <tr><td class="product-name">عسل حبة البركة</td><td>50 ج.م</td><td>100 ج.м</td><td>180 ج.м</td><td>1100 ج.м</td></tr>
-                        <tr><td class="product-name">عسل يانسون</td><td>50 ج.م</td><td>100 ج.м</td><td>180 ج.м</td><td>1100 ج.м</td></tr>
-                        <tr><td class="product-name">عسل أعشاب برية متعددة متبلور</td><td>50 ج.م</td><td>100 ج.м</td><td>180 ج.м</td><td>1100 ج.м</td></tr>
-                        <tr><td class="product-name">عسل البردقوش</td><td>50 ج.م</td><td>100 ج.м</td><td>180 ج.м</td><td>1100 ج.м</td></tr>
-                        <tr><td class="product-name">عسل الموز</td><td>50 ج.م</td><td>100 ج.м</td><td>180 ج.м</td><td>1100 ج.м</td></tr>
-                        <tr><td class="product-name">عسل الشوكيات</td><td>70 ج.م</td><td>130 ج.м</td><td>250 ج.м</td><td>1550 ج.м</td></tr>
-                        <tr><td class="product-name">عسل النعناع</td><td>70 ج.م</td><td>130 ج.м</td><td>250 ج.м</td><td>1550 ج.м</td></tr>
-                        <tr><td class="product-name">عسل الزعتر</td><td>70 ج.م</td><td>130 ج.м</td><td>250 ج.м</td><td>1550 ج.м</td></tr>
-                        <tr><td class="product-name">عسل السنط</td><td>70 ج.م</td><td>130 ج.м</td><td>250 ج.м</td><td>1550 ج.м</td></tr>
-                        <tr><td class="product-name">عسل الأثل</td><td>70 ج.م</td><td>130 ج.м</td><td>250 ج.м</td><td>1550 ج.м</td></tr>
-                        <tr><td class="product-name">عسل الميليسا</td><td>70 ج.م</td><td>130 ج.м</td><td>250 ج.м</td><td>1550 ج.м</td></tr>
-                        <tr><td class="product-name">عسل الشمر الصحراوي</td><td>70 ج.م</td><td>130 ج.м</td><td>250 ج.м</td><td>1550 ج.м</td></tr>
-                        <tr><td class="product-name">عسل السدر الجبلي</td><td>90 ج.م</td><td>180 ج.м</td><td>350 ج.м</td><td>2100 ج.м</td></tr>
-                        <tr><td class="product-name">عسل جبلي حر</td><td>350 ج.م</td><td>700 ج.м</td><td>1350 ج.м</td><td>-</td></tr>
-                        <tr><td class="product-name">عسل المر المصري</td><td>500 ج.م</td><td>1000 ج.м</td><td>2000 ج.м</td><td>-</td></tr>
+                        <tr><td class="product-name">عسل حبة البركة</td><td>50 ج.م</td><td>100 ج.م</td><td>180 ج.م</td><td>1100 ج.م</td></tr>
+                        <tr><td class="product-name">عسل يانسون</td><td>50 ج.م</td><td>100 ج.م</td><td>180 ج.م</td><td>1100 ج.م</td></tr>
+                        <tr><td class="product-name">عسل أعشاب برية متعددة متبلور</td><td>50 ج.م</td><td>100 ج.م</td><td>180 ج.م</td><td>1100 ج.م</td></tr>
+                        <tr><td class="product-name">عسل البردقوش</td><td>50 ج.م</td><td>100 ج.م</td><td>180 ج.م</td><td>1100 ج.م</td></tr>
+                        <tr><td class="product-name">عسل الموز</td><td>50 ج.م</td><td>100 ج.م</td><td>180 ج.م</td><td>1100 ج.م</td></tr>
+                        <tr><td class="product-name">عسل الشوكيات</td><td>70 ج.م</td><td>130 ج.م</td><td>250 ج.م</td><td>1550 ج.م</td></tr>
+                        <tr><td class="product-name">عسل النعناع</td><td>70 ج.م</td><td>130 ج.م</td><td>250 ج.م</td><td>1550 ج.م</td></tr>
+                        <tr><td class="product-name">عسل الزعتر</td><td>70 ج.م</td><td>130 ج.م</td><td>250 ج.م</td><td>1550 ج.م</td></tr>
+                        <tr><td class="product-name">عسل السنط</td><td>70 ج.م</td><td>130 ج.م</td><td>250 ج.م</td><td>1550 ج.م</td></tr>
+                        <tr><td class="product-name">عسل الأثل</td><td>70 ج.م</td><td>130 ج.م</td><td>250 ج.م</td><td>1550 ج.م</td></tr>
+                        <tr><td class="product-name">عسل الميليسا</td><td>70 ج.م</td><td>130 ج.م</td><td>250 ج.م</td><td>1550 ج.م</td></tr>
+                        <tr><td class="product-name">عسل الشمر الصحراوي</td><td>70 ج.م</td><td>130 ج.م</td><td>250 ج.م</td><td>1550 ج.م</td></tr>
+                        <tr><td class="product-name">عسل السدر الجبلي</td><td>90 ج.م</td><td>180 ج.م</td><td>350 ج.م</td><td>2100 ج.م</td></tr>
+                        <tr><td class="product-name">عسل جبلي حر</td><td>350 ج.م</td><td>700 ج.م</td><td>1350 ج.م</td><td>-</td></tr>
+                        <tr><td class="product-name">عسل المر المصري</td><td>500 ج.م</td><td>1000 ج.م</td><td>2000 ج.م</td><td>-</td></tr>
                         <tr><td class="product-name">عسل مر حنون ليبي</td><td>غير متوفر حاليا</td><td>-</td><td>-</td><td>-</td></tr>
                     </tbody>
                 </table>
@@ -196,21 +213,21 @@
                 <table>
                     <thead><tr><th>المنتج</th><th>نص كيلو</th><th>كيلو</th></tr></thead>
                     <tbody>
-                        <tr><td class="product-name">شهد نوارة البرسيم</td><td>80 ج.م</td><td>160 ج.м</td></tr>
-                        <tr><td class="product-name">شهد موالح</td><td>90 ج.م</td><td>180 ج.м</td></tr>
-                        <tr><td class="product-name">شهد زعتر بري</td><td>150 ج.م</td><td>300 ج.м</td></tr>
-                        <tr><td class="product-name">شهد شمر صحراوي</td><td>150 ج.م</td><td>300 ج.м</td></tr>
-                        <tr><td class="product-name">شهد بردقوش</td><td>150 ج.م</td><td>300 ج.м</td></tr>
-                        <tr><td class="product-name">شهد سدر جبلي</td><td>200 ج.م</td><td>400 ج.м</td></tr>
+                        <tr><td class="product-name">شهد نوارة البرسيم</td><td>80 ج.م</td><td>160 ج.م</td></tr>
+                        <tr><td class="product-name">شهد موالح</td><td>90 ج.م</td><td>180 ج.م</td></tr>
+                        <tr><td class="product-name">شهد زعتر بري</td><td>150 ج.م</td><td>300 ج.م</td></tr>
+                        <tr><td class="product-name">شهد شمر صحراوي</td><td>150 ج.م</td><td>300 ج.م</td></tr>
+                        <tr><td class="product-name">شهد بردقوش</td><td>150 ج.م</td><td>300 ج.م</td></tr>
+                        <tr><td class="product-name">شهد سدر جبلي</td><td>200 ج.م</td><td>400 ج.م</td></tr>
                     </tbody>
                 </table>
                 <h3 class="sub-section-title">✨ إضافات لأي نوع عسل من إختيارك</h3>
                 <table>
                     <thead><tr><th>نوع الخلطة</th><th>إضافة لربع كيلو</th><th>إضافة لنص كيلو</th><th>إضافة لكيلو</th></tr></thead>
                     <tbody>
-                        <tr><td class="product-name">خلطة التنين المجنح (للمتزوجين)</td><td>150 ج.م</td><td>300 ج.м</td><td>600 ج.м</td></tr>
-                        <tr><td class="product-name">خلطة المناعة (للأطفال)</td><td>40 ج.م</td><td>80 ج.м</td><td>160 ج.м</td></tr>
-                        <tr><td class="product-name">خلطة الطاقة (للرياضيين)</td><td>100 ج.م</td><td>200 ج.м</td><td>400 ج.м</td></tr>
+                        <tr><td class="product-name">خلطة التنين المجنح (للمتزوجين)</td><td>150 ج.م</td><td>300 ج.م</td><td>600 ج.م</td></tr>
+                        <tr><td class="product-name">خلطة المناعة (للأطفال)</td><td>40 ج.م</td><td>80 ج.م</td><td>160 ج.م</td></tr>
+                        <tr><td class="product-name">خلطة الطاقة (للرياضيين)</td><td>100 ج.م</td><td>200 ج.م</td><td>400 ج.م</td></tr>
                     </tbody>
                 </table>
 
@@ -218,22 +235,22 @@
                 <table>
                     <thead><tr><th>المنتج</th><th>السعر</th></tr></thead>
                     <tbody>
-                        <tr><td class="product-name">غذاء ملكات النحل بلدي خلايا</td><td>15 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">عكبر (البروبليس) البلدي</td><td>12 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">حبوب لقاح النحل البلدي</td><td>1 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">جينسيج أحمر كوري (أعواد أو مطحون)</td><td>8 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">طلع النخيل (نفضة زيرو فائق النقاء)</td><td>2 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">ماكا (بيضاء و سوداء)</td><td>6 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">تونكات علي</td><td>6 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">أشواجندا أورجانيك</td><td>1 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">شرش الزلوع</td><td>5 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">حسك بري</td><td>1 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">مستخلص كوركمين فائق النقاء</td><td>10 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">أوراق العنزة</td><td>5 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">أسبيرولينا</td><td>10 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">جنكوبيلوبا</td><td>5 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">شاي الماتشا</td><td>7 ج.м / للجرام</td></tr>
-                        <tr><td class="product-name">خل التفاح عضوي غير مبستر (به أم الخل)</td><td>60 ج.м / ربع لتر</td></tr>
+                        <tr><td class="product-name">غذاء ملكات النحل بلدي خلايا</td><td>15 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">عكبر (البروبليس) البلدي</td><td>12 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">حبوب لقاح النحل البلدي</td><td>1 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">جينسيج أحمر كوري (أعواد أو مطحون)</td><td>8 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">طلع النخيل (نفضة زيرو فائق النقاء)</td><td>2 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">ماكا (بيضاء و سوداء)</td><td>6 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">تونكات علي</td><td>6 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">أشواجندا أورجانيك</td><td>1 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">شرش الزلوع</td><td>5 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">حسك بري</td><td>1 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">مستخلص كوركمين فائق النقاء</td><td>10 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">أوراق العنزة</td><td>5 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">أسبيرولينا</td><td>10 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">جنكوبيلوبا</td><td>5 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">شاي الماتشا</td><td>7 ج.م / للجرام</td></tr>
+                        <tr><td class="product-name">خل التفاح عضوي غير مبستر (به أم الخل)</td><td>60 ج.م / ربع لتر</td></tr>
                         <tr><td class="product-name">خل تمر عضوي غير مبستر به أم الخل</td><td class="unavailable">غير متوفر حالياً</td></tr>
                         <tr><td class="product-name">تمر واحاتي ممتاز نصف جاف</td><td class="unavailable">غير متوفر حالياً</td></tr>
                         <tr><td class="product-name">تمر واحاتي ممتاز رطب</td><td class="unavailable">غير متوفر حالياً</td></tr>
@@ -246,22 +263,22 @@
                 <table>
                     <thead><tr><th>المنتج</th><th>السعر</th></tr></thead>
                     <tbody>
-                        <tr><td class="product-name">زيت الزيتون العرايشي بكر ممتاز</td><td>130 ج.м (ربع لتر) - 250 ج.м (نص لتر) - 500 ج.м (لتر)</td></tr>
-                        <tr><td class="product-name">زيت جوز الهند العضوي</td><td>65 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت حبة البركة</td><td>65 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت الجرجير</td><td>65 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت السمسم</td><td>65 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت بذور الكتان البلدي (زيت حار)</td><td>45 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت بذور اليقطين</td><td>65 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت بذور القرع العسلي</td><td>65 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت خروع بلدي</td><td>65 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت القرنفل</td><td>100 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت النعناع</td><td>100 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت الكافور</td><td>100 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت أوراق السدر</td><td>100 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت روز ماري</td><td>180 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت اللوز</td><td>180 ج.м / 100 مل</td></tr>
-                        <tr><td class="product-name">زيت الحية</td><td>180 ج.м / 100 مل</td></tr>
+                        <tr><td class="product-name">زيت الزيتون العرايشي بكر ممتاز</td><td>130 ج.م (ربع لتر) - 250 ج.م (نص لتر) - 500 ج.م (لتر)</td></tr>
+                        <tr><td class="product-name">زيت جوز الهند العضوي</td><td>65 ج.م (100 مل) </td></tr>
+                        <tr><td class="product-name">زيت حبة البركة</td><td>65 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت الجرجير</td><td>65 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت السمسم</td><td>65 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت بذور الكتان البلدي (زيت حار)</td><td>45 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت بذور اليقطين</td><td>65 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت بذور القرع العسلي</td><td>65 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت خروع بلدي</td><td>65 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت القرنفل</td><td>100 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت النعناع</td><td>100 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت الكافور</td><td>100 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت أوراق السدر</td><td>100 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت روز ماري</td><td>180 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت اللوز</td><td>180 ج.م (100 مل)</td></tr>
+                        <tr><td class="product-name">زيت الحية</td><td>180 ج.م (100 مل)</td></tr>
                     </tbody>
                 </table>
             </main>
@@ -290,7 +307,7 @@
                         <div class="product-card" data-product-name="عسل الزعتر"><h3 class="product-title">عسل الزعتر</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|70">ربع كيلو - 70 ج.م</option><option value="نص كيلو|130">نص كيلو - 130 ج.م</option><option value="كيلو|250">كيلو - 250 ج.م</option><option value="جركن 7 كيلو|1550">جركن 7 كيلو - 1550 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
                         <div class="product-card" data-product-name="عسل السنط"><h3 class="product-title">عسل السنط</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|70">ربع كيلو - 70 ج.م</option><option value="نص كيلو|130">نص كيلو - 130 ج.م</option><option value="كيلو|250">كيلو - 250 ج.م</option><option value="جركن 7 كيلو|1550">جركن 7 كيلو - 1550 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
                         <div class="product-card" data-product-name="عسل الأثل"><h3 class="product-title">عسل الأثل</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|70">ربع كيلو - 70 ج.م</option><option value="نص كيلو|130">نص كيلو - 130 ج.م</option><option value="كيلو|250">كيلو - 250 ج.م</option><option value="جركن 7 كيلو|1550">جركن 7 كيلو - 1550 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="عسل الميليسا"><h3 class="product-title">عسل الميليسا</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|70">ربع كيلو - 70 ج.م</option><option value="نص كيلو|130">نص كيلو - 130 ج.م</option><option value="كيلو|250">كيلو - 250 ج.م</option><option value="جركن 7 كيلو|1550">جركن 7 كيلو - 1550 ج.м</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="عسل الميليسا"><h3 class="product-title">عسل الميليسا</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|70">ربع كيلو - 70 ج.م</option><option value="نص كيلو|130">نص كيلو - 130 ج.م</option><option value="كيلو|250">كيلو - 250 ج.م</option><option value="جركن 7 كيلو|1550">جركن 7 كيلو - 1550 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
                         <div class="product-card" data-product-name="عسل الشمر الصحراوي"><h3 class="product-title">عسل الشمر الصحراوي</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|70">ربع كيلو - 70 ج.م</option><option value="نص كيلو|130">نص كيلو - 130 ج.م</option><option value="كيلو|250">كيلو - 250 ج.م</option><option value="جركن 7 كيلو|1550">جركن 7 كيلو - 1550 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
                         <div class="product-card" data-product-name="عسل السدر الجبلي"><h3 class="product-title">عسل السمر الجبلي</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|90">ربع كيلو - 90 ج.م</option><option value="نص كيلو|180">نص كيلو - 180 ج.م</option><option value="كيلو|350">كيلو - 350 ج.م</option><option value="جركن 7 كيلو|2100">جركن 7 كيلو - 2100 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
                         <div class="product-card" data-product-name="عسل جبلي حر"><h3 class="product-title">عسل جبلي حر</h3><div class="product-controls"><select class="product-option"><option value="">اختر الوزن</option><option value="ربع كيلو|350">ربع كيلو - 350 ج.م</option><option value="نص كيلو|700">نص كيلو - 700 ج.م</option><option value="كيلو|1350">كيلو - 1350 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
@@ -314,22 +331,22 @@
                 <button class="accordion-header"><span>🌿 قسم الأعشاب ومنتجات النحل</span><span class="icon"><i class="fas fa-chevron-down"></i></span></button>
                 <div class="accordion-panel panel-herbs">
                     <div class="product-grid">
-                        <div class="product-card" data-product-name="غذاء ملكات النحل (جرام)" data-price-per-gram="15"><h3 class="product-title">غذاء ملكات بلدي خلايا</h3><div class="product-controls"><div class="static-option">15 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="عكبر (بروبليس) (جرام)" data-price-per-gram="12"><h3 class="product-title">عكبر (البروبليس) البلدي</h3><div class="product-controls"><div class="static-option">12 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="حبوب لقاح (جرام)" data-price-per-gram="1"><h3 class="product-title">حبوب لقاح النحل البلدي</h3><div class="product-controls"><div class="static-option">1 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="جينسيج أحمر كوري (جرام)" data-price-per-gram="8"><h3 class="product-title">جينسيج أحمر كوري</h3><div class="product-controls"><div class="static-option">8 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="طلع النخيل (جرام)" data-price-per-gram="2"><h3 class="product-title">طلع النخيل (نفضة زيرو)</h3><div class="product-controls"><div class="static-option">2 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="ماكا (جرام)" data-price-per-gram="6"><h3 class="product-title">ماكا (بيضاء و سوداء)</h3><div class="product-controls"><div class="static-option">6 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="تونكات علي (جرام)" data-price-per-gram="6"><h3 class="product-title">تونكات علي</h3><div class="product-controls"><div class="static-option">6 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="أشواجندا (جرام)" data-price-per-gram="1"><h3 class="product-title">أشواجندا أورجانيك</h3><div class="product-controls"><div class="static-option">1 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="شرش الزلوع (جرام)" data-price-per-gram="5"><h3 class="product-title">شرش الزلوع</h3><div class="product-controls"><div class="static-option">5 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="حسك بري (جرام)" data-price-per-gram="1"><h3 class="product-title">حسك بري</h3><div class="product-controls"><div class="static-option">1 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="كوركمين (جرام)" data-price-per-gram="10"><h3 class="product-title">مستخلص كوركمين فائق النقاء</h3><div class="product-controls"><div class="static-option">10 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="أوراق العنزة (جرام)" data-price-per-gram="5"><h3 class="product-title">أوراق العنزة</h3><div class="product-controls"><div class="static-option">5 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="أسبيرولينا (جرام)" data-price-per-gram="10"><h3 class="product-title">أسبيرولينا</h3><div class="product-controls"><div class="static-option">10 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="جنكوبيلوبا (جرام)" data-price-per-gram="5"><h3 class="product-title">جنكوبيلوبا</h3><div class="product-controls"><div class="static-option">5 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="شاي الماتشا (جرام)" data-price-per-gram="7"><h3 class="product-title">شاي الماتشا</h3><div class="product-controls"><div class="static-option">7 ج.м / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="خل التفاح عضوي (ربع لتر)" data-price-per-gram="60"><h3 class="product-title">خل التفاح عضوي غير مبستر</h3><div class="product-controls"><div class="static-option">60 ج.м / ربع لتر</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="غذاء ملكات النحل (جرام)" data-price-per-gram="15"><h3 class="product-title">غذاء ملكات بلدي خلايا</h3><div class="product-controls"><div class="static-option">15 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="عكبر (بروبليس) (جرام)" data-price-per-gram="12"><h3 class="product-title">عكبر (البروبليس) البلدي</h3><div class="product-controls"><div class="static-option">12 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="حبوب لقاح (جرام)" data-price-per-gram="1"><h3 class="product-title">حبوب لقاح النحل البلدي</h3><div class="product-controls"><div class="static-option">1 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="جينسيج أحمر كوري (جرام)" data-price-per-gram="8"><h3 class="product-title">جينسيج أحمر كوري</h3><div class="product-controls"><div class="static-option">8 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="طلع النخيل (جرام)" data-price-per-gram="2"><h3 class="product-title">طلع النخيل (نفضة زيرو)</h3><div class="product-controls"><div class="static-option">2 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="ماكا (جرام)" data-price-per-gram="6"><h3 class="product-title">ماكا (بيضاء و سوداء)</h3><div class="product-controls"><div class="static-option">6 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="تونكات علي (جرام)" data-price-per-gram="6"><h3 class="product-title">تونكات علي</h3><div class="product-controls"><div class="static-option">6 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="أشواجندا (جرام)" data-price-per-gram="1"><h3 class="product-title">أشواجندا أورجانيك</h3><div class="product-controls"><div class="static-option">1 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="شرش الزلوع (جرام)" data-price-per-gram="5"><h3 class="product-title">شرش الزلوع</h3><div class="product-controls"><div class="static-option">5 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="حسك بري (جرام)" data-price-per-gram="1"><h3 class="product-title">حسك بري</h3><div class="product-controls"><div class="static-option">1 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="كوركمين (جرام)" data-price-per-gram="10"><h3 class="product-title">مستخلص كوركمين فائق النقاء</h3><div class="product-controls"><div class="static-option">10 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="أوراق العنزة (جرام)" data-price-per-gram="5"><h3 class="product-title">أوراق العنزة</h3><div class="product-controls"><div class="static-option">5 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="أسبيرولينا (جرام)" data-price-per-gram="10"><h3 class="product-title">أسبيرولينا</h3><div class="product-controls"><div class="static-option">10 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="جنكوبيلوبا (جرام)" data-price-per-gram="5"><h3 class="product-title">جنكوبيلوبا</h3><div class="product-controls"><div class="static-option">5 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="شاي الماتشا (جرام)" data-price-per-gram="7"><h3 class="product-title">شاي الماتشا</h3><div class="product-controls"><div class="static-option">7 ج.م / للجرام</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="خل التفاح عضوي (ربع لتر)" data-price-per-gram="60"><h3 class="product-title">خل التفاح عضوي غير مبستر</h3><div class="product-controls"><div class="static-option">60 ج.م / ربع لتر</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
                     </div>
                 </div>
                 
@@ -337,34 +354,35 @@
                 <div class="accordion-panel panel-oils">
                     <div class="product-grid">
                         <div class="product-card" data-product-name="زيت الزيتون العرايشي"><h3 class="product-title">زيت الزيتون العرايشي بكر</h3><div class="product-controls"><select class="product-option"><option value="">اختر الحجم</option><option value="ربع لتر|130">ربع لتر - 130 ج.م</option><option value="نص لتر|250">نص لتر - 250 ج.م</option><option value="لتر|500">لتر - 500 ج.م</option></select><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت جوز الهند (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت جوز الهند العضوي</h3><div class="product-controls"><div class="static-option">65 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت حبة البركة (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت حبة البركة</h3><div class="product-controls"><div class="static-option">65 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت الجرجير (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت الجرجير</h3><div class="product-controls"><div class="static-option">65 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت السمسم (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت السمسم</h3><div class="product-controls"><div class="static-option">65 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت الكتان (100 مل)" data-price-per-gram="45"><h3 class="product-title">زيت بذور الكتان البلدي</h3><div class="product-controls"><div class="static-option">45 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت بذور اليقطين (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت بذور اليقطين</h3><div class="product-controls"><div class="static-option">65 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت قرع العسل (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت بذور القرع العسلي</h3><div class="product-controls"><div class="static-option">65 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت خروع (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت خروع بلدي</h3><div class="product-controls"><div class="static-option">65 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت القرنفل (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت القرنفل</h3><div class="product-controls"><div class="static-option">100 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت النعناع (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت النعناع</h3><div class="product-controls"><div class="static-option">100 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت الكافور (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت الكافور</h3><div class="product-controls"><div class="static-option">100 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت أوراق السدر (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت أوراق السدر</h3><div class="product-controls"><div class="static-option">100 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت روز ماري (100 مل)" data-price-per-gram="180"><h3 class="product-title">زيت روز ماري</h3><div class="product-controls"><div class="static-option">180 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت اللوز (100 مل)" data-price-per-gram="180"><h3 class="product-title">زيت اللوز</h3><div class="product-controls"><div class="static-option">180 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
-                        <div class="product-card" data-product-name="زيت الحية (100 مل)" data-price-per-gram="180"><h3 class="product-title">زيت الحية</h3><div class="product-controls"><div class="static-option">180 ج.м / 100 مل</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت جوز الهند (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت جوز الهند العضوي</h3><div class="product-controls"><div class="static-option">65 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت حبة البركة (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت حبة البركة</h3><div class="product-controls"><div class="static-option">65 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت الجرجير (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت الجرجير</h3><div class="product-controls"><div class="static-option">65 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت السمسم (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت السمسم</h3><div class="product-controls"><div class="static-option">65 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت الكتان (100 مل)" data-price-per-gram="45"><h3 class="product-title">زيت بذور الكتان البلدي</h3><div class="product-controls"><div class="static-option">45 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت بذور اليقطين (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت بذور اليقطين</h3><div class="product-controls"><div class="static-option">65 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت قرع العسل (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت بذور القرع العسلي</h3><div class="product-controls"><div class="static-option">65 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت خروع (100 مل)" data-price-per-gram="65"><h3 class="product-title">زيت خروع بلدي</h3><div class="product-controls"><div class="static-option">65 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت القرنفل (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت القرنفل</h3><div class="product-controls"><div class="static-option">100 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت النعناع (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت النعناع</h3><div class="product-controls"><div class="static-option">100 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت الكافور (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت الكافور</h3><div class="product-controls"><div class="static-option">100 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت أوراق السدر (100 مل)" data-price-per-gram="100"><h3 class="product-title">زيت أوراق السدر</h3><div class="product-controls"><div class="static-option">100 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت روز ماري (100 مل)" data-price-per-gram="180"><h3 class="product-title">زيت روز ماري</h3><div class="product-controls"><div class="static-option">180 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت اللوز (100 مل)" data-price-per-gram="180"><h3 class="product-title">زيت اللوز</h3><div class="product-controls"><div class="static-option">180 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
+                        <div class="product-card" data-product-name="زيت الحية (100 مل)" data-price-per-gram="180"><h3 class="product-title">زيت الحية</h3><div class="product-controls"><div class="static-option">180 ج.م (100 مل)</div><div class="quantity-selector"><button class="quantity-btn plus">+</button><input type="number" class="quantity-input" value="0" readonly><button class="quantity-btn minus">-</button></div></div></div>
                     </div>
                 </div>
                 
                 <div id="shopping-cart">
                     <h2 class="section-title" style="font-size:2em; margin-top:10px;"><i class="fas fa-shopping-cart"></i> سلة المشتريات</h2>
                     <div id="cart-items"><p style="text-align:center; color:#999;">سلة المشتريات فارغة.</p></div>
-                    <div id="cart-total"><strong>الإجمالي:</strong> <span>0</span> ج.м</div>
+                    <div id="cart-total"><strong>الإجمالي:</strong> <span>0</span> ج.م</div>
                 </div>
                     
                 <div class="customer-details">
                      <h2 class="section-title" style="font-size: 2em; margin-top: 0;"><i class="fas fa-user-edit"></i> بيانات الشحن</h2>
                       <div class="form-group"><label for="customer-name">الاسم بالكامل:</label><input type="text" id="customer-name" placeholder="ادخل اسمك هنا" required></div>
-                     <div class="form-group"><label for="customer-address">العنوان بالتفصيل:</label><input type="text" id="customer-address" placeholder="المحافظة - المدينة - أقرب علامة مميزة" required></div>
+                      <div class="form-group"><label for="customer-phone">رقم الهاتف:</label><input type="tel" id="customer-phone" placeholder="ادخل رقم الهاتف" required></div>
+                      <div class="form-group"><label for="customer-address">العنوان بالتفصيل أو أقرب مكتب بريد:</label><input type="text" id="customer-address" placeholder="المحافظة - المدينة - أقرب علامة مميزة" required></div>
                 </div>
             </main>
             <footer><button id="send-order-btn-final">إتمام الطلب ومراجعته في واتساب</button></footer>
@@ -457,7 +475,7 @@
             function renderCartUI() {
                 cartItemsContainer.innerHTML = ''; // Clear current cart display
                 if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = '<p style="text-align:center; color:#999;">سلة المشتريات فارغة.</p>';
+                    cartItemsContainer.innerHTML = '<p style="text-align:center; color:#999;"> سلة المشتريات فارغة .</p>';
                 } else {
                     cart.forEach(item => {
                         const itemEl = document.createElement('div');
@@ -522,8 +540,10 @@
             sendOrderBtnFinal.addEventListener('click', () => {
                 const customerName = orderContainer.querySelector('#customer-name').value.trim();
                 const customerAddress = orderContainer.querySelector('#customer-address').value.trim();
-                if (!customerName || !customerAddress) {
-                    alert("الرجاء إدخال الاسم والعنوان لإتمام الطلب.");
+                const customerPhone = orderContainer.querySelector('#customer-phone').value.trim();
+                
+                if (!customerName || !customerAddress || !customerPhone) {
+                    alert("الرجاء إدخال الاسم ورقم الهاتف والعنوان لإتمام الطلب.");
                     return;
                 }
                 if (cart.length === 0) {
@@ -533,6 +553,7 @@
                 
                 let orderMessage = `*طلب جديد من متجر مناحل آل امبابي*\n\n`;
                 orderMessage += `👤 *العميل:* ${customerName}\n`;
+                orderMessage += `📞 *رقم الهاتف:* ${customerPhone}\n`;
                 orderMessage += `📍 *العنوان:* ${customerAddress}\n\n`;
                 orderMessage += `-----------\n*ملخص الطلب:*\n\n`;
                 
@@ -541,7 +562,7 @@
                     orderMessage += `  (التفاصيل: ${item.details}) (الكمية: ${item.quantity})\n`;
                 });
                 
-                orderMessage += `\n*الإجمالي: ${cartTotalSpan.textContent} ج.м*\n\n`;
+                orderMessage += `\n*الإجمالي: ${cartTotalSpan.textContent} ج.م*\n\n`;
                 orderMessage += `-----------`;
 
                 const whatsappNumber = "201098050035"; // Replace with your number
